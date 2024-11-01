@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: korova_image
+
+logging:
+  level:
+    root: ERROR

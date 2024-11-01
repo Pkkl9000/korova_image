@@ -1,20 +1,28 @@
 package dpa.helper.korova_image.mouse_key_hook;
 
 
+import dpa.helper.korova_image.event_reactor.Event;
 import lc.kra.system.keyboard.GlobalKeyboardHook;
 import lc.kra.system.keyboard.event.GlobalKeyAdapter;
 import lc.kra.system.keyboard.event.GlobalKeyEvent;
 import lc.kra.system.mouse.GlobalMouseHook;
 import lc.kra.system.mouse.event.GlobalMouseAdapter;
 import lc.kra.system.mouse.event.GlobalMouseEvent;
+import reactor.core.publisher.Flux;
+
+import java.time.Duration;
 
 //uses system-hook library from https://github.com/kristian/system-hook
 public class MouseAndKeyboardHooking {
 
     private static boolean keyboardRun = true;
     private static boolean mouseRun = true;
+    private static final EventGenerator eventGenerator = new EventGenerator();
 
     public static void MouseListener() {
+
+        EventListener eventListener = new EventListener(eventGenerator);
+
         // Might throw a UnsatisfiedLinkError if the native library fails to load or a RuntimeException if hooking fails
         GlobalMouseHook mouseHook = new GlobalMouseHook(); // Add true to the constructor, to switch to raw input mode
 
@@ -35,8 +43,11 @@ public class MouseAndKeyboardHooking {
 //                }
 
                 // разобраться, что за баттон_но
-                if ((event.getButtons() & GlobalMouseEvent.BUTTON_LEFT) !=GlobalMouseEvent.BUTTON_NO) {
-                    System.out.println(event.getButton() + " " + event.getX() + " " + event.getY());
+//                public static final int BUTTON_NO = 0;
+                if ((event.getButtons() & GlobalMouseEvent.BUTTON_LEFT) != GlobalMouseEvent.BUTTON_NO) {
+                    System.out.println("from system_hook: " + event.getButton() + " " + event.getX() + " " + event.getY());
+                    eventGenerator.generateEvent(event);
+//                    eventListener.somethingHappened(event);
                 }
                 if (event.getButton()==GlobalMouseEvent.BUTTON_MIDDLE) {
                     mouseRun = false;
