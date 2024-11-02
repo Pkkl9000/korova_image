@@ -152,6 +152,10 @@
             <artifactId>system-hook</artifactId>
             <version>3.8</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-vertexai</artifactId>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -166,6 +170,13 @@
                 <groupId>org.springframework.shell</groupId>
                 <artifactId>spring-shell-dependencies</artifactId>
                 <version>${spring-shell.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.cloud</groupId>
+                <artifactId>libraries-bom</artifactId>
+                <version>  26.50.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
