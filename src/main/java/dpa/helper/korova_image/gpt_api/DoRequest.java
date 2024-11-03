@@ -18,10 +18,9 @@ public class DoRequest {
     private static final String endPointUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + apiKey;
 
 
-    public static void connectAndRequest(String question) throws IOException {
+    public static void connectAndRequest(JsonObject jsonObject) throws IOException {
 
         URL url = new URL(endPointUrl);
-        JsonObject jsonRequest = JsonRequestConstruct.sdfage(question);
 
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("POST");
@@ -29,7 +28,7 @@ public class DoRequest {
         con.setDoOutput(true);
 
         try (DataOutputStream wr = new DataOutputStream(con.getOutputStream())) {
-            wr.write(jsonRequest.toString().getBytes());
+            wr.write(jsonObject.toString().getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -44,8 +43,8 @@ public class DoRequest {
             //System.out.println(response.toString());
 
             String  json = response.toString();
-            JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
-            JsonArray candidatesArray = jsonObject.getAsJsonArray("candidates");
+            JsonObject jsonObjectForParsing = JsonParser.parseString(json).getAsJsonObject();
+            JsonArray candidatesArray = jsonObjectForParsing.getAsJsonArray("candidates");
             for (JsonElement candidateElement : candidatesArray) {
                 JsonObject candidateObject = candidateElement.getAsJsonObject();
                 JsonObject contentObject = candidateObject.getAsJsonObject("content");
@@ -60,7 +59,5 @@ public class DoRequest {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
     }
 }

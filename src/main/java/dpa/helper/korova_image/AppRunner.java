@@ -1,6 +1,7 @@
 package dpa.helper.korova_image;
 
 //import dpa.helper.korova_image.event_reactor.EventGenerator;
+import dpa.helper.korova_image.gpt_api.JsonImageConstruct;
 import dpa.helper.korova_image.gpt_api.JsonRequestConstruct;
 import dpa.helper.korova_image.mouse_key_hook.MouseEventHandler;
 import lombok.RequiredArgsConstructor;
@@ -21,21 +22,7 @@ public class AppRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws IOException, InterruptedException {
 
-
-        System.out.println(JsonRequestConstruct.sdfage("Tell me another joke about cats"));
-
-//        new asbshbDoRequest.connectAndRequest("Tell me another joke about cats");
-
-        DoRequest.connectAndRequest("Tell me another joke about cats");
-
-
-//        new RequestGpt().doRequest();
-
-
-//        eventListener работает
-//        MouseAndKeyboardHooking.MouseListener();
-//        eventListener работает
-
+        DoRequest.connectAndRequest(JsonImageConstruct.createJsonObject("What is this picture?", "example0.jpg"));
     }
 }
 

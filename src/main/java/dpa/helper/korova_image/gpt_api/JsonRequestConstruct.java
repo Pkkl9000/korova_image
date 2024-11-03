@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 
 public class JsonRequestConstruct {
 
-    public static JsonObject sdfage(String input) {
+    public static JsonObject makeJson(String input) {
         JsonObject requestJson = new JsonObject();
         JsonObject userPart = new JsonObject();
         userPart.addProperty("text", input);
