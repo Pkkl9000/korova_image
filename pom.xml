@@ -156,7 +156,25 @@
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-vertexai</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>net.java.dev.jna</groupId>-->
+<!--            <artifactId>jna</artifactId>-->
+<!--            <version>5.12.0</version> &lt;!&ndash; Проверьте наличие более новой версии &ndash;&gt;-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>platform</artifactId>
+            <version>3.5.2</version>
+        </dependency>
     </dependencies>
+
+
+
+
+
+
+
+
     <dependencyManagement>
         <dependencies>
             <dependency>
