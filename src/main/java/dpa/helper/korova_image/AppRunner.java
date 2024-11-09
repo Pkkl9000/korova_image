@@ -1,16 +1,17 @@
 package dpa.helper.korova_image;
 
-import dpa.helper.korova_image.console_scan.ConsoleReader;
 import dpa.helper.korova_image.mouse_key_hook.MouseEventHandler;
 import dpa.helper.korova_image.paint_start.LaunchPaint;
+import dpa.helper.korova_image.window.ActiveWindowCoordinates;
+import dpa.helper.korova_image.window.ScreenshotAndCrop;
+import dpa.helper.korova_image.window.WindowParams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
-import dpa.helper.korova_image.gpt_api.DoRequest;
 
+import java.awt.*;
 import java.io.IOException;
-import java.util.Scanner;
 
 
 @RequiredArgsConstructor
@@ -20,14 +21,21 @@ public class AppRunner implements ApplicationRunner {
     private final MouseEventHandler handler = new MouseEventHandler();
 
     @Override
-    public void run(ApplicationArguments args) throws IOException, InterruptedException {
+    public void run(ApplicationArguments args) throws IOException {
 
-//        DoRequest.connectAndRequest(JsonImageConstruct.createJsonObject("What is this picture?", "example0.jpg"));
+        LaunchPaint.launch();
 
-      //  LaunchPaint.launch();
+        WindowParams windowParams = ActiveWindowCoordinates.getCoordsAndDimensions();
+        assert windowParams != null : "windowParams should not be null";
 
-        ConsoleReader consoleReader = new ConsoleReader();
-        consoleReader.run();
+        try {
+            System.setProperty("java.awt.headless", "false");
+            ScreenshotAndCrop.takeScreenshotAndCrop("qqqfhgr", windowParams);
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 }
 
