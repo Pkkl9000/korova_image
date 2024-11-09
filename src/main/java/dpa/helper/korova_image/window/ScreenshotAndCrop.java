@@ -16,7 +16,7 @@ public class ScreenshotAndCrop {
 
         System.out.println(pathToScreencrops);
 
-        String resultPath = pathToScreencrops.concat(outputFilePath);
+        String resultPath = pathToScreencrops.concat(outputFilePath).concat(".png");
 
         // Снимаем скриншот
         Robot robot = new Robot();

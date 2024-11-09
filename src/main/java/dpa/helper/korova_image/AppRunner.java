@@ -1,16 +1,13 @@
 package dpa.helper.korova_image;
 
+import dpa.helper.korova_image.img_process.ImageComparator;
 import dpa.helper.korova_image.mouse_key_hook.MouseEventHandler;
-import dpa.helper.korova_image.paint_start.LaunchPaint;
-import dpa.helper.korova_image.window.ActiveWindowCoordinates;
-import dpa.helper.korova_image.window.ScreenshotAndCrop;
-import dpa.helper.korova_image.window.WindowParams;
+import dpa.helper.korova_image.proj_utils.SomeUsefulMethods;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.awt.*;
 import java.io.IOException;
 
 
@@ -23,17 +20,37 @@ public class AppRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws IOException {
 
-        LaunchPaint.launch();
+        System.setProperty("java.awt.headless", "false");
 
-        WindowParams windowParams = ActiveWindowCoordinates.getCoordsAndDimensions();
-        assert windowParams != null : "windowParams should not be null";
+//        LaunchPaint.launch();
+//
+//        WindowParams windowParams = ActiveWindowCoordinates.getCoordsAndDimensions();
+//
+//        if (windowParams == null) {
+//            throw new NullPointerException("windowParams is null");
+//        }
+//
+//        try {
+//            System.setProperty("java.awt.headless", "false");
+//            ScreenshotAndCrop.takeScreenshotAndCrop("qqqfhgr", windowParams);
+//        } catch (AWTException e) {
+//            throw new RuntimeException(e);
+//        }
 
-        try {
-            System.setProperty("java.awt.headless", "false");
-            ScreenshotAndCrop.takeScreenshotAndCrop("qqqfhgr", windowParams);
-        } catch (AWTException e) {
-            throw new RuntimeException(e);
-        }
+//        Screenshot.makeScreenshot("example1");
+
+        String q0 = SomeUsefulMethods
+                .getRelativePathToFolderInResources("screenshots")
+                .concat("example0.png");
+        String q1 = SomeUsefulMethods
+                .getRelativePathToFolderInResources("screenshots")
+                .concat("example1.png");
+//        ImageDifference.tryIt(q0, q1);
+
+
+        ImageComparator imageComparator = new ImageComparator();
+        imageComparator.anotherMethod("example0", "example1");
+
 
 
     }
