@@ -3,13 +3,14 @@ package dpa.helper.korova_image.window;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinUser;
+import dpa.helper.korova_image.img_process.SubImageParams;
 
 
 public class ActiveWindowCoordinates {
 
     private static final String TARGET_WINDOW_TITLE = "Безымянный - Paint"; // Заголовок окна MS Paint
     private static final int WAIT_TIME = 10000; // 10 секунд в миллисекундах
-    public static WindowParams getCoordsAndDimensions() {
+    public static SubImageParams getCoordsAndDimensions() {
 
         User32 user32 = User32.INSTANCE;
 
@@ -26,7 +27,7 @@ public class ActiveWindowCoordinates {
         WinDef.RECT rect = new WinDef.RECT();
         user32.GetWindowRect(hwnd, rect);
 
-        return new WindowParams(rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top);
+        return new SubImageParams(rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top);
     }
 
     public static Boolean waitForMSPaint() {

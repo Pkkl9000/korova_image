@@ -1,18 +1,13 @@
 package dpa.helper.korova_image.img_process;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
-public class RgbPixel {
-
+public class SubImageParams {
     private int x;
     private int y;
-    private int RGB;
-
+    private int width;
+    private int height;
 }

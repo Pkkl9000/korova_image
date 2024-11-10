@@ -1,6 +1,6 @@
 package dpa.helper.korova_image.img_process;
 
-import dpa.helper.korova_image.proj_utils.SomeUsefulMethods;
+import dpa.helper.korova_image.project_utils.SomeUsefulMethods;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 public class Screenshot {
 
     public static void makeScreenshot(String screenshotName) {
+
         try {
             Robot robot = new Robot();
 

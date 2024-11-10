@@ -1,4 +1,4 @@
-package dpa.helper.korova_image.proj_utils;
+package dpa.helper.korova_image.project_utils;
 
 import java.io.BufferedWriter;
 import java.io.File;

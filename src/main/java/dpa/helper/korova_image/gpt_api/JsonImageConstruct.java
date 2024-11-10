@@ -2,7 +2,7 @@ package dpa.helper.korova_image.gpt_api;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import dpa.helper.korova_image.proj_utils.SomeUsefulMethods;
+import dpa.helper.korova_image.project_utils.SomeUsefulMethods;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;

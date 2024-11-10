@@ -1,8 +1,11 @@
 package dpa.helper.korova_image.img_process;
 
-import dpa.helper.korova_image.proj_utils.SomeUsefulMethods;
+import dpa.helper.korova_image.project_utils.SomeUsefulMethods;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 public class Utils {
 
@@ -41,5 +44,25 @@ public class Utils {
                 .getRelativePathToFolderInResources("screenshots");
 
         return pathToImageSource.concat(filename).concat(".png");
+    }
+
+    public static void cropImage(String outputFileName, BufferedImage inputImage, SubImageParams subImageParams) {
+
+        String pathToScreencrops = SomeUsefulMethods.getRelativePathToFolderInResources("screencrops");
+
+        String resultPath = pathToScreencrops.concat(outputFileName).concat(".png");
+
+        // Вырезаем прямоугольник из скриншота
+        BufferedImage croppedImage = inputImage.getSubimage(
+                subImageParams.getX(), subImageParams.getY(), subImageParams.getWidth(), subImageParams.getHeight());
+
+        // Сохраняем вырезанную часть в файл
+        try {
+            ImageIO.write(croppedImage, "png", new File(resultPath));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("Скриншот успешно сохранен в " + outputFileName + ".png");
     }
 }
