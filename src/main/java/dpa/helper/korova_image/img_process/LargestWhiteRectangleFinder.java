@@ -12,6 +12,8 @@ public class LargestWhiteRectangleFinder {
 
     private static final int TOLERANCE = 5;
 
+
+    // проверка связи
     public static void main(String[] args) {
 
         String pathToFolder = SomeUsefulMethods.getRelativePathToFolderInResources("screenshots");
