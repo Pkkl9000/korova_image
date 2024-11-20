@@ -25,7 +25,7 @@ public class AppRunner implements ApplicationRunner {
         System.setProperty("java.awt.headless", "false");
 
 
-        MouseHooking.MouseListener();
+//        MouseHooking.MouseListener();
 
 
 
