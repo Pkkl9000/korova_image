@@ -1,5 +1,9 @@
 package dpa.helper.korova_image;
 
+import dpa.helper.korova_image.gpt_api.DoRequest;
+import dpa.helper.korova_image.gpt_api.JsonRequestConstruct;
+import dpa.helper.korova_image.gpt_api.SimpleResponse;
+import dpa.helper.korova_image.gpt_api.SimpleResponseSender;
 import dpa.helper.korova_image.mouse_key_hook.MouseAndKeyboardEventHandler;
 import dpa.helper.korova_image.mouse_key_hook.MouseHooking;
 import unused.tracking.some_track.gigarx.EventStream;
@@ -23,6 +27,15 @@ public class AppRunner implements ApplicationRunner {
     public void run(ApplicationArguments args) throws IOException {
 
         System.setProperty("java.awt.headless", "false");
+
+//        DoRequest.connectAndRequest(JsonRequestConstruct.makeJson("hi!"));
+
+        SimpleResponseSender sender = new SimpleResponseSender();
+        SimpleResponse response = new SimpleResponse("Hi!");
+        String result = sender.send(response);
+        System.out.println(result);
+
+
 
 
 //        MouseHooking.MouseListener();
