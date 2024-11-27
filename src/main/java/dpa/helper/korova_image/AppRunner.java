@@ -18,7 +18,7 @@ public class AppRunner implements ApplicationRunner {
 
     private final MouseAndKeyboardEventHandler eventHandler = new MouseAndKeyboardEventHandler();
 
-
+//  http://localhost:8082/h2-console
     @Override
     public void run(ApplicationArguments args) throws IOException {
 

@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@EnableJpaRepositories("dpa.helper.korova_image.h2_demo_layers.domain.repository")
-@EntityScan("dpa.helper.korova_image.h2_demo_layers.domain.entity")
+@EnableJpaRepositories(basePackages = {"dpa.helper.korova_image.db_utils"})
+//@EntityScan("dpa.helper.korova_image.db_utils.entities.entity")
 @SpringBootApplication
 public class KorovaImageApplication {
 
