@@ -1,13 +1,10 @@
 package dpa.helper.korova_image.gpt_api;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URI;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 //private static final String apiKey = "AIzaSyDOKCyDSmbUOU4kI-BufpNL9okIS3r7MRo";
@@ -35,7 +32,7 @@ public class SimpleResponseSender {
 
             // Отправка данных
             try (OutputStream os = connection.getOutputStream()) {
-                os.write(responseObject.toJson().getBytes("utf-8"));
+                os.write(responseObject.toJson().getBytes(StandardCharsets.UTF_8));
             }
 
             // Получение ответа

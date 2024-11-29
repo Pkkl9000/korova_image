@@ -1,6 +1,5 @@
 package dpa.helper.korova_image;
 
-import dpa.helper.korova_image.mouse_key_hook.MouseAndKeyboardEventHandler;
 import dpa.helper.korova_image.mouse_key_hook.MouseHooking;
 import dpa.helper.korova_image.mouse_key_tracking.*;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +13,6 @@ import java.io.IOException;
 @RequiredArgsConstructor
 @Component
 public class AppRunner implements ApplicationRunner {
-
-    private final MouseAndKeyboardEventHandler eventHandler = new MouseAndKeyboardEventHandler();
 
 //  http://localhost:8082/h2-console
     @Override
