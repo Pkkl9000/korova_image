@@ -1,13 +1,8 @@
 package dpa.helper.korova_image;
 
-import dpa.helper.korova_image.gpt_api.DoRequest;
-import dpa.helper.korova_image.gpt_api.JsonRequestConstruct;
-import dpa.helper.korova_image.gpt_api.SimpleResponse;
-import dpa.helper.korova_image.gpt_api.SimpleResponseSender;
 import dpa.helper.korova_image.mouse_key_hook.MouseAndKeyboardEventHandler;
 import dpa.helper.korova_image.mouse_key_hook.MouseHooking;
-import unused.tracking.some_track.gigarx.EventStream;
-import unused.tracking.some_track.gigarx.EventTrackerG;
+import dpa.helper.korova_image.mouse_key_tracking.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -30,18 +25,37 @@ public class AppRunner implements ApplicationRunner {
 
 //        DoRequest.connectAndRequest(JsonRequestConstruct.makeJson("hi!"));
 
-        SimpleResponseSender sender = new SimpleResponseSender();
-        SimpleResponse response = new SimpleResponse("Hi!");
-        String result = sender.send(response);
-        System.out.println(result);
+//        SimpleResponseSender sender = new SimpleResponseSender();
+//        SimpleResponse response = new SimpleResponse("Hi!");
+//        String result = sender.send(response);
+//        System.out.println(result);
+
+//        WindowManager.robotKeyMinimize();
+
+//        LaunchPaint.launch();
+
+//        ConsoleEventListener.processConsoleInput();
+
+//        MouseEventListener.startMouseListener(2, GlobalMouseEvent.class);
+
+//        MouseHooking2.registerMouseListener();
+
+//        MouseEventListener.startMouseListener(2, GlobalMouseEvent.class);
+
+//        MouseHooking.MouseListener(eventTracker);
+
+        getCountedMouseEvents(2);
 
 
 
+    }
 
-//        MouseHooking.MouseListener();
+    private void getCountedMouseEvents(int count) {
 
+        EventTrackerReactive eventTracker = new EventTrackerReactive();
 
-
+        MouseHooking.MouseListener(eventTracker);
+        eventTracker.countFixedMouseEvents(count);
     }
 }
 

@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
@@ -24,8 +25,10 @@ public class SimpleResponseSender {
         StringBuilder responseBody = new StringBuilder();
         try {
             // Создание URL и открытие соединения
-            URL urlObj = new URL(endPointUrl);
-            HttpURLConnection connection = (HttpURLConnection) urlObj.openConnection();
+            URI uri = new URI(endPointUrl);
+
+            // Открываем HTTP-соединение
+            HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setDoOutput(true);
