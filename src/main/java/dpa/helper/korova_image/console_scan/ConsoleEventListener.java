@@ -1,5 +1,6 @@
 package dpa.helper.korova_image.console_scan;
 
+import dpa.helper.korova_image.actions.StartArea;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
@@ -18,18 +19,13 @@ public class ConsoleEventListener {
 
         // Обрабатываем команды
         commandStream.subscribe(command -> {
-            switch (command.toLowerCase()) {
-                case "start":
-                    startAction();
-                    break;
-                case "stop":
-                    stopAction();
-                    break;
-                case "exit":
-                    exitAction();
-                    break;
-                default:
-                    System.out.println("Неизвестная команда: " + command);
+            switch (command = command.toLowerCase()) {
+                case "start" -> startAction();
+                case "makearea" -> StartArea.makeAreaAction();
+                case "mkar" -> StartArea.makeAreaAction();
+                case "stop" -> stopAction();
+                case "exit" -> exitAction();
+                default -> System.out.println("Неизвестная команда: " + command);
             }
         });
 
