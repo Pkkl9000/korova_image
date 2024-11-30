@@ -21,8 +21,8 @@ public class ConsoleEventListener {
         commandStream.subscribe(command -> {
             switch (command = command.toLowerCase()) {
                 case "start" -> startAction();
-                case "makearea" -> StartArea.makeAreaAction();
-                case "mkar" -> StartArea.makeAreaAction();
+                case "startarea" -> StartArea.makeAreaAction();
+                case "star" -> StartArea.makeAreaAction();
                 case "stop" -> stopAction();
                 case "exit" -> exitAction();
                 default -> System.out.println("Неизвестная команда: " + command);
