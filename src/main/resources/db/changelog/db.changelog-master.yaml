@@ -22,3 +22,33 @@ databaseChangeLog:
                   type: varchar(255)
                   constraints:
                     nullable: false
+
+
+  - changeSet:
+      id: 2
+      author: dpa
+      changes:
+        - createTable:
+            tableName: objects
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: link
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+                  constraints:
+                    nullable: true
