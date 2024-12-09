@@ -9,7 +9,8 @@ import lc.kra.system.mouse.event.GlobalMouseEvent;
 //uses system-hook library from https://github.com/kristian/system-hook
 public class MouseHooking {
 
-    private static boolean mouseRun = true;
+//    private static boolean mouseRun = true;
+    private static boolean mouseRun;
 
     public static void MouseListener(EventTrackerReactive eventTracker) {
         // Might throw a UnsatisfiedLinkError if the native library fails to load or a RuntimeException if hooking fails
