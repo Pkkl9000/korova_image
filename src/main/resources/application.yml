@@ -16,7 +16,7 @@ spring:
       path: /h2-console
 #  http://localhost:8082/h2-console
   datasource:
-    url: jdbc:h2:file:./data/accounttestdb
+    url: jdbc:h2:file:./data/accounttestdb;AUTO_SERVER=TRUE
     driverClassName: org.h2.Driver
     username: sa
     password:
@@ -36,6 +36,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: true
 #  jpa:
 #    defer-datasource-initialization: true
 #    hibernate:

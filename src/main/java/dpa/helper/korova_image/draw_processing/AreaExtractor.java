@@ -69,9 +69,9 @@ public class AreaExtractor {
             croppedImage.copyTo(rgbaImage, mask.submat(boundingRect));
 
             // Сохраняем результат
-            Imgcodecs.imwrite(pathToFolder.concat("dotResult.png"), rgbaImage);
+            Imgcodecs.imwrite(pathToFolder.concat("dot.png"), rgbaImage);
 
-            System.out.println("Область небелого цвета успешно сохранена в файл 'dotResult.png'.");
+            System.out.println("Область небелого цвета успешно сохранена в файл 'dot.png'.");
         } else {
             System.out.println("Не найдено подходящих областей.");
         }

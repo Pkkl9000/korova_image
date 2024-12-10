@@ -18,7 +18,7 @@ public class ImageOverlay {
 
         System.out.println(pathToTarget);
 
-        String pathToAddition = pathToFolder.concat("dotResult.png");
+        String pathToAddition = pathToFolder.concat("dot.png");
         // Загружаем основное изображение
         BufferedImage background = ImageIO.read(new File(pathToTarget));
 

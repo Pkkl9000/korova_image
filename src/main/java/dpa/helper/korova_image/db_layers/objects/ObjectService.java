@@ -1,34 +1,25 @@
 package dpa.helper.korova_image.db_layers.objects;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import dpa.helper.korova_image.db_layers.objects.entity.ObjectEntity;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class ObjectService {
+public interface ObjectService {
 
-    private final ObjectRepository objectRepository;
+    List<ObjectEntity> findAll();
 
-    @Autowired
-    public ObjectService(ObjectRepository objectRepository) {
-        this.objectRepository = objectRepository;
-    }
+    Optional<ObjectEntity> findById(int id);
 
-    public List<ObjectEntity> findAll() {
-        return objectRepository.findAll();
-    }
+//    Optional<ObjectEntity> save(ObjectEntity objectEntity);
 
-    public Optional<ObjectEntity> findById(int id) {
-        return objectRepository.findById(id);
-    }
+//    Optional<ObjectEntity> findByName(String name);
 
-    public ObjectEntity save(ObjectEntity objectEntity) {
-        return objectRepository.save(objectEntity);
-    }
+    @Transactional
+    ObjectEntity createObject(ObjectEntity objectEntity);
 
-    public void deleteById(int id) {
-        objectRepository.deleteById(id);
-    }
+    ObjectEntity getObjectById(int id);
+
+    void deleteById(int id);
 }

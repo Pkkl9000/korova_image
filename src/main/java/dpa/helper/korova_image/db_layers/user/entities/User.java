@@ -1,4 +1,4 @@
-package dpa.helper.korova_image.db_utils.entities;
+package dpa.helper.korova_image.db_layers.user.entities;
 
 import jakarta.persistence.*;
 
